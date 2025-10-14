@@ -40,3 +40,13 @@ func Ackermann(m int, n int) int {
 	}
 	return temp
 }
+
+func Selection_sort(numeros []int, inicio int)  int{
+	pos:= inicio
+	for i := inicio+1; i < len(numeros); i++ {
+		if numeros[i]<numeros[pos]{
+			pos = i
+		}
+	}
+	return  pos
+}
