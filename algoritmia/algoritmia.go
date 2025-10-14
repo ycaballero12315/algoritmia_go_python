@@ -26,3 +26,17 @@ func DivVenceras(numbers []int, init int, end int) int {
 	rigth_number := DivVenceras(numbers, medio+1, end)
 	return left_numbers + rigth_number
 }
+
+func Ackermann(m int, n int) int {
+	temp:=0
+	if (m==0){
+		temp = n+1 
+	}else{
+		if (n==0){
+			temp = Ackermann(m-1, 1)
+		}else{
+			temp = Ackermann(m-1, Ackermann(m, n-1))
+		}
+	}
+	return temp
+}
