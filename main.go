@@ -8,4 +8,5 @@ import (
 func main()  {
 	fmt.Printf("La potencia es: %d\n", algoritmia.Potencia(2,5))
 	fmt.Printf("El factorial se %d\n", algoritmia.Factorial(5))
+	fmt.Printf("Algoritmo divide y venceras: %d\n", algoritmia.DivVenceras([]int{2,5,6,7,23}, 0,4))
 }
