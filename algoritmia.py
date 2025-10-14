@@ -15,3 +15,13 @@ def factorial(n:int)->int:
     return n*factorial(n-1)
 
 print(factorial(-5))
+
+def method(elems: list[int], init:int, end:int)->int:
+    if init == end:
+        return elems[init]
+    medio = (init + end) // 2
+    elemen_left = method(elems, init, medio)
+    elemen_rigth = method(elems, medio+1, end)
+    return elemen_left + elemen_rigth
+
+print(method([4,5,6,7,3], 0, 4))
