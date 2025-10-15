@@ -1,5 +1,10 @@
 package algoritmia
 
+import (
+	"fmt"
+	// "golang.org/x/tools/go/analysis/passes/appends"
+)
+
 func Potencia(a int, b int) int {
 	if a == 1 || b == 0 {
 		return 1
@@ -18,35 +23,83 @@ func Factorial(n int) int {
 }
 
 func DivVenceras(numbers []int, init int, end int) int {
-	if init == end{
+	if init == end {
 		return numbers[init]
 	}
-	medio := (init+end)/2
+	medio := (init + end) / 2
 	left_numbers := DivVenceras(numbers, init, medio)
 	rigth_number := DivVenceras(numbers, medio+1, end)
 	return left_numbers + rigth_number
 }
 
 func Ackermann(m int, n int) int {
-	temp:=0
-	if (m==0){
-		temp = n+1 
-	}else{
-		if (n==0){
+	temp := 0
+	if m == 0 {
+		temp = n + 1
+	} else {
+		if n == 0 {
 			temp = Ackermann(m-1, 1)
-		}else{
+		} else {
 			temp = Ackermann(m-1, Ackermann(m, n-1))
 		}
 	}
 	return temp
 }
 
-func Selection_sort(numeros []int, inicio int)  int{
-	pos:= inicio
-	for i := inicio+1; i < len(numeros); i++ {
-		if numeros[i]<numeros[pos]{
+func Selection_sort(numeros []int, inicio int) int {
+	pos := inicio
+	for i := inicio + 1; i < len(numeros); i++ {
+		if numeros[i] < numeros[pos] {
 			pos = i
 		}
 	}
-	return  pos
+	return pos
+}
+
+func Fibonnacci(n int) int {
+	if n == 0 {
+		return 0
+	}
+	if n == 1 {
+		return 1
+	}
+	return Fibonnacci(n-1) + Fibonnacci(n-2)
+}
+
+type StackInt struct{
+	data []int
+}
+
+func (stack *StackInt) Push(value int)(){
+	stack.data = append(stack.data, value)
+}
+
+func (stack *StackInt) Pop() (int, bool) {
+	if len(stack.data) == 0{
+		return 0, false
+	}
+	value := stack.data[len(stack.data)-1]
+	stack.data = stack.data[:len(stack.data)-1]
+	return value, true
+}
+
+func (stack *StackInt)  IsEmty() bool{
+	return len(stack.data) == 0
+}
+
+func (stack *StackInt) Len() int{
+	return len(stack.data)
+}
+
+func (stack *StackInt) Add(stack1 *StackInt) *StackInt{
+	if len(stack.data) != len(stack1.data){
+		fmt.Printf("Las pilas tienen que tener la misma longitud.")
+		return nil
+	}
+	result := &StackInt{}
+	for i := 0; i < len(stack.data); i++ {
+		sum := stack.data[i] + stack1.data[i]
+		result.Push(sum)
+	}
+	return  result
 }
