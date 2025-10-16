@@ -18,4 +18,13 @@ func main() {
 	fmt.Printf("Tamanno de la lista: %d\n", algoritmia.Length())
 	algoritmia.AddElms(40)
 	fmt.Printf("El ultimo elemento es: %d\n", algoritmia.PopElm())
+
+    lkl := &algoritmia.LinkedList{}
+	lkl.AddNodeInEndList("A")
+	lkl.AddNodeInEndList("B")
+	lkl.AddNodeInEndList("C")
+
+	for value := range lkl.Values() {
+		fmt.Println(value)
+	}
 }
