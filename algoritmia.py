@@ -132,12 +132,14 @@ if __name__ == "__main__":
     elemns.pop()
     print(f"Despues del pop, la lista quedo asi: {elemns}")
 
+
+"""Listas simplemente enlazadas"""
 class Node:
-    def __init__(self, value:int)->None:
+    def __init__(self, value:int):
         self.value = value
         self.next = None
 
-class ListSE:
+class LinkedList:
     def __init__(self):
         self.head = None
     
@@ -183,7 +185,17 @@ class ListSE:
                 return
             current = current.next
 
-    elem = Node(5)
+lkl = LinkedList()
+lkl.add_node_in_end_list("A")
+lkl.add_node_in_end_list("B")
+lkl.add_node_in_end_list("C")
+
+lkl.insert_in_the_wherever_in_position("X")
+
+print(list(lkl.print_values()))
+
+lkl.delete_node_mach_value("B")
+print(list(lkl.print_values()))
     
 
 
