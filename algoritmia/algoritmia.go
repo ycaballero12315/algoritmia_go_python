@@ -1,6 +1,7 @@
 package algoritmia
 
 import (
+	"slices"
 	"fmt"
 	// "golang.org/x/tools/go/analysis/passes/appends"
 )
@@ -103,3 +104,54 @@ func (stack *StackInt) Add(stack1 *StackInt) *StackInt{
 	}
 	return  result
 }
+
+var numbers = []int{10,20,30}
+
+func AddElms(value int) []int{
+	numbers = append(numbers, value)
+	return numbers
+}
+
+func PopElm() int{
+	if len(numbers) == 0{
+		return 0
+	}
+	value := numbers[len(numbers) -1]
+	numbers = numbers[:len(numbers) -1]
+	return value
+}
+func IsNumExist(value int) bool{
+	return slices.Contains(numbers, value)
+}
+
+func Length() int{
+	return len(numbers)
+}
+
+type Array struct{
+	data []int
+}
+
+func NewArray() *Array{
+	return &Array{
+		data: []int{10,20,30},
+	}
+}
+
+func (arr *Array) AddElem(value int)(){
+	arr.data = append(arr.data, value)
+}
+
+func (arr *Array) IsExistElem(value int) bool {
+	return slices.Contains(arr.data, value)
+}
+
+func (arr *Array) LengthArray() int{
+	return len(arr.data)
+}
+
+func (arr *Array) PopElem() int {
+	value:= arr.data[arr.LengthArray()-1]
+	return value
+}
+
