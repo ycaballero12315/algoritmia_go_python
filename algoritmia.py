@@ -119,3 +119,73 @@ if __name__ == "__main__":
         print(f"Error: {e}")
     
     print("\n" + "="*50 + "\n")
+
+
+    elemns:list[int] = [10,20,30]
+    elemns.append(40)
+    value = False
+    if 20 in elemns:
+        value = True
+    print(elemns)
+    print(value)
+    print(len(elemns))
+    elemns.pop()
+    print(f"Despues del pop, la lista quedo asi: {elemns}")
+
+class Node:
+    def __init__(self, value:int)->None:
+        self.value = value
+        self.next = None
+
+class ListSE:
+    def __init__(self):
+        self.head = None
+    
+    def add_node_in_end_list(self, value:int)->None:
+        new_node = Node(value)
+
+        if self.head is None:
+            self.head = new_node
+            return
+        
+        current = self.head
+        while current.next is not None:
+            current = current.next
+        
+        current.next = new_node
+    
+    def delete_node_mach_value(self, value:int):
+        if self.head is None:
+            return
+        if self.head.value == value:
+            self.head = self.head.next
+            return
+        current = self.head
+        while current.next is not None:
+            if current.next.value == value:
+                current.next = current.next.next
+                return
+            current = current.next
+    
+    def print_values(self):
+        current = self.head
+        while current:
+            yield current.value
+            current = current.next
+    
+    def insert_in_the_wherever_in_position(self, value):
+        current = self.head
+        while current:
+            if current.value == "A":
+                new_node = Node(value)
+                new_node.next = current.next
+                current.next = new_node
+                return
+            current = current.next
+
+    elem = Node(5)
+    
+
+
+        
+
