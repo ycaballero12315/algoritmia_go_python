@@ -155,3 +155,66 @@ func (arr *Array) PopElem() int {
 	return value
 }
 
+// Listas enlazadas
+type Node struct{
+	value string
+	next *Node
+}
+
+type LinkedList struct{
+	head *Node
+}
+
+func (l *LinkedList) AddNodeInEndList(value string)() {
+	new_node := &Node{value: value}
+	if l.head == nil{
+		l.head = new_node
+		return
+	}
+	current := l.head
+	for current.next != nil{
+		current = current.next
+	}
+	current.next = new_node
+}
+func (l *LinkedList) DeleteNode(value string)(){
+	if l.head.value == value{
+		l.head = l.head.next
+		return
+	}
+	current := l.head
+	for current.next != nil{
+		if current.next.value == value{
+			current.next = current.next.next
+			return
+		}
+		current = current.next
+	}
+}
+
+func (l *LinkedList) Values() <-chan string {
+	ch := make(chan string)
+	go func() {
+		current := l.head
+		for current != nil {
+			ch <- current.value
+			current = current.next
+		}
+		close(ch)
+	}()
+	return ch
+}
+
+func (l *LinkedList) InsertWhereverPosition(value string)(){
+	new_node := &Node{value: value}
+
+	current := l.head
+	for current != nil{
+		if current.value == "A" {
+			new_node.next = current.next
+			current.next = new_node
+			return
+		}
+		current = current.next
+	}
+}
