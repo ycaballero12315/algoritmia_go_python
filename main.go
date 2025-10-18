@@ -27,4 +27,5 @@ func main() {
 	for value := range lkl.Values() {
 		fmt.Println(value)
 	}
+	fmt.Printf("Haciendo pruebas con hashmap: %d\n", algoritmia.HashMap("yoe"))
 }
